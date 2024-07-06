@@ -151,39 +151,39 @@
 ```python
 
 def say_hello(friend):
-	if friend.country == "United Kingdom":
-		print("hello")
-	
-	elif friend.country == "France":
-		print("Bonjour")
-		
-	# 加入新的國家需要修改原來的程式碼
-	elif friend.country == "Russia":
-		print("привет")
+    if friend.country == "United Kingdom":
+        print("hello")
+
+    elif friend.country == "France":
+        print("Bonjour")
+        
+    # 加入新的國家需要修改原來的程式碼
+    elif friend.country == "Russia":
+        print("привет")
 ```
 
 正確示範：
 
 ```python
 class UnitedKingdom:
-	name = "United Kingdom"
-	hello = "hello"
+    name = "United Kingdom"
+    hello = "hello"
 
 class France:
-	name = "France"
-	hello = "Bonjour"
+    name = "France"
+    hello = "Bonjour"
 
 class Russia:
-	name = "Russia"
-	hello = "привет"
+    name = "Russia"
+    hello = "привет"
 
 
 def say_hello(friend, country_list):
-	# 加入新的國家不需要修改原來的程式碼
-	for country in country_list:
-		if friend.country == country.name:
-			print(country.hello)
-			break
+    # 加入新的國家不需要修改原來的程式碼
+    for country in country_list:
+        if friend.country == country.name:
+            print(country.hello)
+            break
 
 ```
 
@@ -196,19 +196,19 @@ def say_hello(friend, country_list):
 
 ```python
 class Toothbrush(abc.ABC):
-	@abc.abstractmethod
-	def get_head(self):
-		return NotImplemented
+    @abc.abstractmethod
+    def get_head(self):
+        return NotImplemented
 
 
 class T1(Toothbrush):
-	def get_head(self):
-		return "軟質刷頭"
+    def get_head(self):
+        return "軟質刷頭"
 
 
 class T2(Toothbrush):
-	def get_head(self):
-		return "硬質刷頭"
+    def get_head(self):
+        return "硬質刷頭"
 ```
 
 ![](./img/exp0.png)
@@ -216,37 +216,37 @@ class T2(Toothbrush):
 錯誤示範：
 ```python
 class Toothbrush(abc.ABC):
-	@abc.abstractmethod
-	def get_head(self):
-		return NotImplemented
-	
-	@abc.abstractmethod
-	def get_body(self):
-		return NotImplemented
+    @abc.abstractmethod
+    def get_head(self):
+        return NotImplemented
+    
+    @abc.abstractmethod
+    def get_body(self):
+        return NotImplemented
 
-	
+    
 class T1(Toothbrush):
-	def get_head(self):
-		return "軟質刷頭"
-	
-	def get_body(self):
-		return "標準版"
-	
+    def get_head(self):
+        return "軟質刷頭"
+    
+    def get_body(self):
+        return "標準版"
+    
 
 class T2(Toothbrush):
-	def get_head(self):
-		return "硬質刷頭"
-	
-	def get_body(self):
-		return "標準版"
+    def get_head(self):
+        return "硬質刷頭"
+    
+    def get_body(self):
+        return "標準版"
 
 
 class T3(Toothbrush):
-	def get_head(self):
-		return "軟質刷頭"
-	
-	def get_body(self):
-		return "無線充電版"
+    def get_head(self):
+        return "軟質刷頭"
+    
+    def get_body(self):
+        return "無線充電版"
 
 ```
 
@@ -261,43 +261,43 @@ class T3(Toothbrush):
 ```python
 
 class Head(abc.ABC):
-	@abc.abstractmethod
-	def get_head(self):
-		return NotImplemented
-	
+    @abc.abstractmethod
+    def get_head(self):
+        return NotImplemented
+    
 class SoftHead(Head):
-	def get_head(self):
-		return "軟質刷頭"
+    def get_head(self):
+        return "軟質刷頭"
 
 class HardHead(Head):
-	def get_head(self):
-		return "硬質刷頭"
+    def get_head(self):
+        return "硬質刷頭"
 
 
 class Body(abc.ABC):
-	@abc.abstractmethod
-	def get_body(self):
-		return NotImplemented
-	
+    @abc.abstractmethod
+    def get_body(self):
+        return NotImplemented
+    
 class StandardBody(Body):
-	def get_body(self):
-		return "標準版"
+    def get_body(self):
+        return "標準版"
 
 class WirelessBody(Body):
-	def get_body(self):
-		return "無線充電版"
+    def get_body(self):
+        return "無線充電版"
 
 
 class Toothbrush:
-	def __init__(self, head: Head, body: Body):
-		self.head = head
-		self.body = body
-		
-	def get_head(self):
-		return self.head.get_head()
-	
-	def get_body(self):
-		return self.body.get_body()
+    def __init__(self, head: Head, body: Body):
+        self.head = head
+        self.body = body
+        
+    def get_head(self):
+        return self.head.get_head()
+    
+    def get_body(self):
+        return self.body.get_body()
 
 ```
 
@@ -385,7 +385,7 @@ def call_bot(user_id, message):
     elif message == "晚安":
         print(f"晚安,{user_id}")
 
-	# 加入新的對話功能需要修改這裡
+    # 加入新的對話功能需要修改這裡
 
 def main():
     call_bot("a1234", "早安")  # 早安,a1234
@@ -412,18 +412,18 @@ def main():
 
 ```python
 class GoodMorningBot:
-	
-	instance_ref = None
+    
+    instance_ref = None
 
     def __new__(cls):
-		# 確保 GoodMorningBot 只能有一個實例
+        # 確保 GoodMorningBot 只能有一個實例
         if cls.instance_ref is None:
             return super().__new__(cls)
         return cls.instance_ref
-	
-	def __init__(self):
-		# 確保實例不會被重複初始化
-		if self is GoodMorningBot.instance_ref:
+    
+    def __init__(self):
+        # 確保實例不會被重複初始化
+        if self is GoodMorningBot.instance_ref:
             return
         GoodMorningBot.instance_ref = self
 
@@ -435,21 +435,21 @@ class GoodMorningBot:
 
 
 class GoodNightBot:
-	
-	instance_ref = None
+    
+    instance_ref = None
 
     def __new__(cls):
-		# 確保 GoodMorningBot 只能有一個實例
+        # 確保 GoodMorningBot 只能有一個實例
         if cls.instance_ref is None:
             return super().__new__(cls)
         return cls.instance_ref
-	
-	def __init__(self):
-		# 確保實例不會被重複初始化
-		if self is GoodNightBot.instance_ref:
+    
+    def __init__(self):
+        # 確保實例不會被重複初始化
+        if self is GoodNightBot.instance_ref:
             return
         GoodNightBot.instance_ref = self
-	
+    
     def should_handle_message(self, user_id, message) -> bool:
         return message == "晚安"
 
@@ -560,7 +560,7 @@ def call_bot(user_id, message):
 ```python
 class SetName(Bot):
     def __init__(self):
-		super().__init__()
+        super().__init__()
         self.name_dict = {}
 
     def should_handle_message(self, user_id, message) -> bool:
@@ -591,14 +591,14 @@ class SetName(Bot):
 
 class GoodMorning(Bot):
     def __init__(self, name_bot):
-		super().__init__()
+        super().__init__()
         self.name_bot = name_bot
 
     def should_handle_message(self, user_id, message) -> bool:
         return message == "早安"
 
     def run(self, user_id, message):
-		# 從其他bot取得用戶名稱
+        # 從其他bot取得用戶名稱
         if user_id not in self.name_bot.name_dict:
             print(f"早安,{user_id}")
             return
@@ -608,14 +608,14 @@ class GoodMorning(Bot):
 
 class GoodNight(Bot):
     def __init__(self, name_bot):
-		super().__init__()
+        super().__init__()
         self.name_bot = name_bot
 
     def should_handle_message(self, user_id, message) -> bool:
         return message == "晚安"
 
     def run(self, user_id, message):
-		# 從其他bot取得用戶名稱
+        # 從其他bot取得用戶名稱
         if user_id not in self.name_bot.name_dict:
             print(f"晚安,{user_id}")
             return
@@ -625,7 +625,7 @@ class GoodNight(Bot):
 
 class SetName(Bot):
     def __init__(self):
-		super().__init__()
+        super().__init__()
         self.name_dict = {}
 
     def should_handle_message(self, user_id, message) -> bool:
@@ -642,9 +642,9 @@ name_bot = SetName()
 bot_list = [name_bot, GoodMorning(name_bot), GoodNight(name_bot)]
 
 ##################### call_bot 略 #####################
-	
+    
 def main():
-	call_bot("b5678", "setname:小明")  # 命名成功！小明
+    call_bot("b5678", "setname:小明")  # 命名成功！小明
     call_bot("a1234", "早安")  # 早安,a1234
     call_bot("b5678", "早安")  # 早安,小明
     call_bot("a1234", "晚安")  # 晚安,a1234
@@ -687,7 +687,7 @@ class Bot(abc.ABC):
         return cls.instance_ref
 
     def __init__(self, centre):
-		if self is self.__class__.instance_ref:
+        if self is self.__class__.instance_ref:
             return
         self.__class__.instance_ref = self
         self.centre_ref = centre
@@ -695,8 +695,8 @@ class Bot(abc.ABC):
     @property
     @abc.abstractmethod
     def name(self) -> str:
-		# 每個bot可以自己取名
-		# 方便其他bot找到自己
+        # 每個bot可以自己取名
+        # 方便其他bot找到自己
         return NotImplemented
 
     @abc.abstractmethod
@@ -717,7 +717,7 @@ class GoodMorning(Bot):
         return message == "早安"
 
     def run(self, user_id, message):
-		# 通過名稱在界面上找bot
+        # 通過名稱在界面上找bot
         bot_dict = self.centre_ref.pipelines()
 
         if "set name" not in bot_dict:
@@ -737,7 +737,7 @@ class GoodNight(Bot):
         return message == "晚安"
 
     def run(self, user_id, message):
-		# 通過名稱在界面上找bot
+        # 通過名稱在界面上找bot
         bot_dict = self.centre_ref.pipelines()
 
         if "set name" not in bot_dict:
@@ -755,7 +755,7 @@ class SetName(Bot):
 
     @property
     def name(self) -> str:
-		# 其他bot可以通過這個名稱找到這個bot
+        # 其他bot可以通過這個名稱找到這個bot
         return "set name"
 
     def should_handle_message(self, user_id, message) -> bool:
@@ -765,14 +765,14 @@ class SetName(Bot):
         user_name = message[8:]
         self.name_dict[user_id] = user_name
         print(f"命名成功！{user_name}")
-		
+        
 
 class BotCentre:
     def __init__(self):
-		# bot通過統一的界面建立聯繫
+        # bot通過統一的界面建立聯繫
         self.bot_list = [SetName(self), 
-                         GoodMorning(self),
-                         GoodNight(self)]
+                        GoodMorning(self),
+                        GoodNight(self)]
 
     def __call__(self, user_id, message):
         for bot in self.bot_list:
@@ -781,9 +781,9 @@ class BotCentre:
                 break
 
     def pipelines(self):
-		# bot通過這個界面來找到其他bot
+        # bot通過這個界面來找到其他bot
         return {bot.name: bot for bot in self.bot_list}
-	
+    
 
 def main():
     call_bot = BotCentre()
@@ -843,7 +843,7 @@ class Bot(abc.ABC):
         return cls.instance_ref
 
     def __init__(self, pipelines):
-		if self is self.__class__.instance_ref:
+        if self is self.__class__.instance_ref:
             return
         self.__class__.instance_ref = self
         self.pipelines = pipelines  # 請求者只持有中介的界面的索引
@@ -855,7 +855,7 @@ class Bot(abc.ABC):
 
     @abc.abstractmethod
     def interface(self):
-		# 讓提供者決定界面要提供什麼接口給外界使用
+        # 讓提供者決定界面要提供什麼接口給外界使用
         return NotImplemented
 
     @abc.abstractmethod
@@ -879,7 +879,7 @@ class GoodMorning(Bot):
         return message == "早安"
 
     def run(self, user_id, message):
-		# 請求者通過中介者的界面獲得提供者的界面
+        # 請求者通過中介者的界面獲得提供者的界面
         bot_dict = self.pipelines()
 
         if "set name" not in bot_dict:
@@ -902,7 +902,7 @@ class GoodNight(Bot):
         return message == "晚安"
 
     def run(self, user_id, message):
-		# 請求者通過中介者的界面獲得提供者的界面
+        # 請求者通過中介者的界面獲得提供者的界面
         bot_dict = self.pipelines()
 
         if "set name" not in bot_dict:
@@ -923,7 +923,7 @@ class SetName(Bot):
         return "set name"
 
     def interface(self):
-		# 讓提供者決定界面要提供什麼接口給外界使用
+        # 讓提供者決定界面要提供什麼接口給外界使用
         class set_name_interface:
             name_dict = self.name_dict
         return set_name_interface
@@ -935,14 +935,14 @@ class SetName(Bot):
         user_name = message[8:]
         self.name_dict[user_id] = user_name
         print(f"命名成功！{user_name}")
-	
+    
 
 class BotCentre:
     def __init__(self):
-		# 只給pipelines界面，而不是self
+        # 只給pipelines界面，而不是self
         self.bot_list = [SetName(self.pipelines),
-                         GoodMorning(self.pipelines),
-                         GoodNight(self.pipelines)]
+                        GoodMorning(self.pipelines),
+                        GoodNight(self.pipelines)]
 
     def __call__(self, user_id, message):
         for bot in self.bot_list:
@@ -951,7 +951,7 @@ class BotCentre:
                 break
 
     def pipelines(self):
-		# 只給請求者存取提供者界面
+        # 只給請求者存取提供者界面
         return {bot.name: bot.interface for bot in self.bot_list}
 
 ####################### main 略 #######################
@@ -1066,12 +1066,12 @@ class SetName(InterfaceBot):
         self.name_dict[user_id] = user_name
         print(f"命名成功！{user_name}")
 
-	
+    
 class BotCentre:
     def __init__(self):
         self.bot_list = [SetName(self.pipelines),
-                         GoodMorning(self.pipelines),
-                         GoodNight(self.pipelines)]
+                        GoodMorning(self.pipelines),
+                        GoodNight(self.pipelines)]
 
     def __call__(self, user_id, message):
         for bot in self.bot_list:
@@ -1080,7 +1080,7 @@ class BotCentre:
                 break
 
     def pipelines(self):
-		# 只回傳有interface的bot
+        # 只回傳有interface的bot
         return {bot.name: bot.interface for bot in self.bot_list
                 if isinstance(bot, InterfaceBot)}
 
@@ -1118,26 +1118,26 @@ BotCentre有哪些bot是在初始化(`__init__`)的時候被決定的，
 
 ```python
 class BotCentre:
-	# 舊寫法
+    # 舊寫法
     # def __init__(self):
     #     self.bot_list = [SetName(self.pipelines),
     #                      GoodMorning(self.pipelines),
     #                      GoodNight(self.pipelines)]
-	
-	# 新寫法
-	def __init__(self, bot_list):
-		self.bot_list = bot_list
-		
+    
+    # 新寫法
+    def __init__(self, bot_list):
+        self.bot_list = bot_list
+        
 
 def main():
-	# 舊寫法
+    # 舊寫法
     # call_bot = BotCentre()
-	
-	# 新寫法: 報錯，需要先初始化call_bot
-	bot_list = [SetName(call_bot.pipelines),
+    
+    # 新寫法: 報錯，需要先初始化call_bot
+    bot_list = [SetName(call_bot.pipelines),
                 GoodMorning(call_bot.pipelines),
                 GoodNight(call_bot.pipelines)]
-	call_bot = BotCentr(bot_list)
+    call_bot = BotCentr(bot_list)
 ```
 
 然後很快就會發現`call_bot`初始化需要`bot_list`，
@@ -1150,13 +1150,13 @@ def main():
 
 ```python
 class BotCentre:
-	def __init__(self, class_list):
-		self.bot_list = [cl(self.pipelines) for cl in class_list]
-		
+    def __init__(self, class_list):
+        self.bot_list = [cl(self.pipelines) for cl in class_list]
+        
 
 def main():
-	class_list = [SetName, GoodMorning, GoodNight]
-	call_bot = BotCentr(class_list)
+    class_list = [SetName, GoodMorning, GoodNight]
+    call_bot = BotCentr(class_list)
 ```
 
 但是我想先聊聊`程式碼4.3`違背了什麼設計原則？
@@ -1181,14 +1181,14 @@ def main():
 class GetName(Bot):
     def __init__(self, pipelines, super_users: optional[list]):
         super().__init__(pipelines)
-		# 需要在初始化時設定人員名單
+        # 需要在初始化時設定人員名單
         if super_users is None:
             self.super_users = []
         else:
             self.super_users = super_users
 
     def should_handle_message(self, user_id, message) -> bool:
-		# 只有人員名單內的人能使用
+        # 只有人員名單內的人能使用
         if user_id not in self.super_users:
             return False
         return message[:8] == "getname:"
@@ -1233,8 +1233,8 @@ class GetName(Bot):
 class GetName(Bot):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-		
-		# 人員名單在工廠中完成初始化
+        
+        # 人員名單在工廠中完成初始化
         self.super_users = []
 
     def should_handle_message(self, user_id, message) -> bool:
@@ -1256,42 +1256,42 @@ class GetName(Bot):
 # 工廠父類
 # 為建立bot的行為建立一個穩定的界面
 class BotFactory(abc.ABC):
-	@abc.abstractmethod
-	def create(self, *args, **kwargs):
-		return NotImplemented
-	
+    @abc.abstractmethod
+    def create(self, *args, **kwargs):
+        return NotImplemented
+    
 
 class GoodMorningFactory(BotFactory):
-	def create(self, *args, **kwargs):
-		return GoodMorning(*args, **kwargs)
+    def create(self, *args, **kwargs):
+        return GoodMorning(*args, **kwargs)
 
 
 class GoodNightFactory(BotFactory):
-	def create(self, *args, **kwargs):
-		return GoodNight(*args, **kwargs)
+    def create(self, *args, **kwargs):
+        return GoodNight(*args, **kwargs)
 
 
 class SetNameFactory(BotFactory):
-	def create(self, *args, **kwargs):
-		return SetName(*args, **kwargs)
-	
+    def create(self, *args, **kwargs):
+        return SetName(*args, **kwargs)
+    
 
 class GetNameFactory(BotFactory):
-	def __init__(self, super_users: list=[]):
-		self.super_users = super_users
-	
-	def create(self, *args, **kwargs):
-		bot = GetName(*args, **kwargs)
-		# 完成人員名單初始化
-		bot.super_users = self.super_users
-		return bot
-	
+    def __init__(self, super_users: list=[]):
+        self.super_users = super_users
+    
+    def create(self, *args, **kwargs):
+        bot = GetName(*args, **kwargs)
+        # 完成人員名單初始化
+        bot.super_users = self.super_users
+        return bot
+    
 
 class BotCentre:
     def __init__(self, factory_list: list[BotFactory]):
-		# 使用統一的界面完成初始化
-		self.bot_list = [factory.create(self.pipelines) 
-                         for factory in factory_list]
+        # 使用統一的界面完成初始化
+        self.bot_list = [factory.create(self.pipelines) 
+                        for factory in factory_list]
 
     def __call__(self, user_id, message):
         for bot in self.bot_list:
@@ -1305,7 +1305,7 @@ class BotCentre:
 
 
 def main():
-	# 使用工廠建立bot
+    # 使用工廠建立bot
     factory_list = [GoodMorningFactory(),
                     GoodNightFactory(),
                     SetNameFactory(),
@@ -1450,40 +1450,40 @@ class SetName(InterfaceBot):
 
 
 class BotFactory(abc.ABC):
-	@abc.abstractmethod
-	def create(self, *args, **kwargs):
-		return NotImplemented
+    @abc.abstractmethod
+    def create(self, *args, **kwargs):
+        return NotImplemented
 
 
 class GoodMorningFactory(BotFactory):
-	def create(self, *args, **kwargs):
-		return GoodMorning(*args, **kwargs)
+    def create(self, *args, **kwargs):
+        return GoodMorning(*args, **kwargs)
 
 
 class GoodNightFactory(BotFactory):
-	def create(self, *args, **kwargs):
-		return GoodNight(*args, **kwargs)
+    def create(self, *args, **kwargs):
+        return GoodNight(*args, **kwargs)
 
 
 class GetNameFactory(BotFactory):
-	def __init__(self, super_users: list=[]):
-		self.super_users = super_users
-	
-	def create(self, *args, **kwargs):
-		bot = GetName(*args, **kwargs)
-		bot.super_users = self.super_users
-		return bot
+    def __init__(self, super_users: list=[]):
+        self.super_users = super_users
+    
+    def create(self, *args, **kwargs):
+        bot = GetName(*args, **kwargs)
+        bot.super_users = self.super_users
+        return bot
 
 
 class SetNameFactory(BotFactory):
-	def create(self, *args, **kwargs):
-		return SetName(*args, **kwargs)
+    def create(self, *args, **kwargs):
+        return SetName(*args, **kwargs)
 
 
 class BotCentre:
     def __init__(self, factory_list: list[BotFactory]):
         self.bot_list = [factory.create(self.pipelines) 
-                         for factory in factory_list]
+                        for factory in factory_list]
 
     def __call__(self, user_id, message):
         for bot in self.bot_list:
